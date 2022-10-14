@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% load static%}
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="sidebar-brand-text mx-3"><code><p style="font-family:monospace; font-style: initial; font-variant-ligatures: historical-ligatures; color:lightseagreen;">Classify.</p></code></div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+
+                        <li class="sidebar-item  active">
+                            <a href="{% url 'home' %}" class='sidebar-link'>
+                                <i class="fas fa-fw fa-home"></i>
+                                <!-- <i class="bi bi-grid-fill"></i> -->
+                                <span>Beranda</span>
+                            </a>
+                        </li>
+
+                       
+                        <li class="sidebar-item">
+                            <a href="{% url 'training' %}" class='sidebar-link'>
+                                <i class="fas fa-fw fa-spinner"></i>
+                                <span>Training</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'validasi' %}" class='sidebar-link'>
+                                <i class="fab fa-fw fa-cloudsmith"></i>
+                                <span>Validasi</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'testing' %}" class='sidebar-link'>
+                                <i class="fab fa-fw fa-cloudsmith"></i>
+                                <span>Testing</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'ujidata' %}" class="sidebar-link">
+                                <i class="fas fa-fw fa-file"></i>
+                                <span>Uji Data Realtime</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
+                                    <!-- <li class="breadcrumb-item active" aria-current="page">DataTable</li> -->
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hoverable rows start -->
+                <section class="section">
+                    <div class="row" id="table-hover-row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <center><h3 class="card-title">KLASIFIKASI EMOSI PELAJAR TERHADAP METODE PEMBELAJARAN ONLINE ATAU DARING MENGGUNAKAN K-NEAREST NEIGHBOR DAN MUTUAL INFORMATION</center>
+                                            <center><img src="{% static 'images/logo-usu.png'%}" width="400px" height="400px" alt="image"></center>
+                                            <center><h5 class="card-title">Chyntia Claudia</h5></center>
+                                            <center><h5 class="card-title">16140101</h5></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Hoverable rows end -->
+            </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Chyntia Claudia</p>
+                    </div>
+                    <!-- <div class="float-end">
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                href="http://ahmadsaugi.com">Chyntia Claudia</a></p>
+                    </div> -->
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+{% endblock %}

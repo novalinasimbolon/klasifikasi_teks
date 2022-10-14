@@ -1,0 +1,54 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classify</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css'%}">
+    <link rel="stylesheet" href="{% static 'vendors/simple-datatables/style.css'%}">
+
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css'%}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/app.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg'%}" type="image/x-icon">
+</head>
+
+<body id="page-top">
+
+    {% block page_content %}
+
+    {% endblock %}
+    <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="{% static 'vendors/apexcharts/apexcharts.js'%}"></script>
+    <script src="{% static 'js/pages/dashboard.js'%}"></script>
+
+    <script src="{% static 'js/main.js'%}"></script>
+
+    <script src="{% static 'vendors/simple-datatables/simple-datatables.js'%}"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+    <script>
+        function showLoaderOnClick(url) {
+            showLoader();
+            window.location = url;
+        }
+        function showLoader() {
+            $('body').append('<div style="" id="loadingDiv"><div class = "loader"> Loading... </div></div>');
+        }
+    </script>
+
+</body>
+
+</html>

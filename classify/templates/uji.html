@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% load static%}
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="sidebar-brand-text mx-3">
+                            <code><p style="font-family:monospace; font-style: initial; font-variant-ligatures: historical-ligatures; color:lightseagreen;">Classify.</p></code>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'home' %}" class='sidebar-link'>
+                                <i class="fas fa-fw fa-home"></i>
+                                <!-- <i class="bi bi-grid-fill"></i> -->
+                                <span>Beranda</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sidebar-item ">
+                            <a href="{% url 'training' %}" class='sidebar-link'>
+                                <i class="fas fa-fw fa-spinner"></i>
+                                <span>Training</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'validasi' %}" class='sidebar-link'>
+                                <i class="fab fa-fw fa-cloudsmith"></i>
+                                <span>Validasi</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'testing' %}" class='sidebar-link'>
+                                <i class="fab fa-fw fa-cloudsmith"></i>
+                                <span>Testing</span></a>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  active">
+                            <a href="{% url 'ujidata' %}" class="sidebar-link">
+                                <i class="fas fa-fw fa-file"></i>
+                                <span>Uji Data Realtime</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <!-- <h3>DataTable</h3>
+                            <p class="text-subtitle text-muted">For user to check they list</p> -->
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <!-- <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                                </ol> -->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="card shadow col-lg-12 mb-4">
+                        <div class="card-body">
+                            <center>
+                                <h3 class="card-title" style="color: white;">KLASIFIKASI EMOSI PELAJAR TERHADAP METODE
+                                    PEMBELAJARAN ONLINE ATAU DARING MENGGUNAKAN K-NEAREST NEIGHBOR DAN MUTUAL
+                                    INFORMATION</h3>
+                            </center>
+                            <center>
+                                <h3>KLASIFIKASI</h3>
+                            </center><br>
+                            <form id='normalisation' method="post" class="container">
+                                <div class="row">
+                                    {% csrf_token %}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="textarea">Input</label>
+                                            <textarea placeholder="masukan teks..." style="height: 200px;"
+                                                class="form-control form-control-lg" type="text" id="your-text"
+                                                name="your-text" value="{{ text }}" required>{{ input }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="textarea">Output</label>
+                                        <div>
+                                            <h4>
+                                                {% for item in output_norm %}
+                                                {% if item == 3 %}
+                                                <td>Sentimen Marah</td>
+                                                {% elif item == 2 %}
+                                                <td>Sentimen Sedih</td>
+                                                {% else %}
+                                                <td>Sentimen Senang</td>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </h4>
+                                        </div>
+                                        <!-- Example single danger button -->
+
+                                        {# <textarea style="height: 200px;" class="form-control form-control-lg"
+                                            id="result">{{ hasil }}</textarea> #}
+                                    </div>
+
+                                    <div class="w-100"></div>
+
+                                    <div class="col-sm">
+                                        <button type="submit" value="input" class="btn btn-primary">Classify</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Chyntia Claudia</p>
+                    </div>
+                    <!-- <div class="float-end">
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                href="http://ahmadsaugi.com">Chyntia Claudia</a></p>
+                    </div> -->
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+{% endblock %}
