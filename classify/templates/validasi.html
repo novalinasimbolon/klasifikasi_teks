@@ -100,9 +100,12 @@
                                     <br><br>
                                 </div>
                                 <br></br>
+                                {% if not result %}
+                                <div class="col-md-12">Upload data Anda</div>
+                                {% else %}
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        <i class="fa fa-table"></i> Testing Data
+                                        <i class="fa fa-table"></i> Data Validasi
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="card">
@@ -116,7 +119,6 @@
                                                                 <th>Tweet</th>
                                                                 <th>Preproses</th>
                                                                 <th>Sentimen Manual</th>
-                                                                <th>Sentimen KNN</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -129,13 +131,6 @@
                                                                 {% elif row.2 == 2 %}
                                                                 <td>Sedih</td>
                                                                 {% else %}
-                                                                <td>Senang</td>
-                                                                {% endif %}
-                                                                {% if row.3 == 3 %}
-                                                                <td>Marah</td>
-                                                                {% elif row.3 == 2 %}
-                                                                <td>Sedih</td>
-                                                                {% elif row.3 == 1 %}
                                                                 <td>Senang</td>
                                                                 {% endif %}
                                                             </tr>
@@ -153,39 +148,16 @@
                                     <br><br>
                                     <!-- /.panel-body -->
                                     <br><br>
-                                    <div class="card card-description"> <br><b>CONFUSION MATRIX</b><br>
+                                    <div class="card card-description"> <br><b>DATA CROSS VALIDATION</b><br>
                                         <div class="row">
-                                            <div class="col-md-2">
-
-                                                <table class="table" width="100%" cellspacing="0"
-                                                    style="margin-left:12px">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="color:white;"> Index </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tr>
-                                                        <td>Precision<br><br>
-                                                            Recall<br>
-                                                            F1-Score<br><br>
-                                                            Support<br><br>
-                                                        </td>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
                                             <div class="col-md-10">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered" width="100%" cellspacing="0"
                                                         style="margin-left:12px">
                                                         <thead>
                                                             <tr>
-                                                                <th>Senang</th>
-                                                                <th>Sedih</th>
-                                                                <th>Marah</th>
-                                                                <th>Accuracy</th>
-                                                                <th>Macro Avg</th>
-                                                                <th>Weighted Avg</th>
+                                                                <th>Fold</th>
+                                                                <th>Scores</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -193,10 +165,6 @@
                                                             <tr>
                                                                 <td>{{row.0}}</td>
                                                                 <td>{{row.1}}</td>
-                                                                <td>{{row.2}}</td>
-                                                                <td>{{row.3}}</td>
-                                                                <td>{{row.4}}</td>
-                                                                <td>{{row.5}}</td>
 
                                                             </tr>
                                                             {% endfor %}
@@ -223,6 +191,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

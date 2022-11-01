@@ -15,6 +15,8 @@ from sklearn.metrics import mutual_info_score
 from tweepy import OAuthHandler
 import tweepy
 
+from sklearn.model_selection import cross_val_score
+
 consumerKey = "aOeKsPYiHaNogKz839cOjNcrw"
 consumerSecret = "7iVB2Wrmx5HgaDpKvEpQuOvSHSEbQvLPDRYlFBLWwLU3iQN8uh"
 accessToken = "456738617-OdAQgKaDCsMpv3V2Ky20lhiphIqjGDQjbrpEAJ6v"
@@ -88,36 +90,6 @@ def stem_uji(tweets):
     return result
 
 
-def random():
-    x = []
-    y = []
-    connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='',
-                                 db='klasifikasi_teks')
-
-    # create cursor
-    cursor = connection.cursor()
-
-    # Execute query
-    sql = "SELECT * FROM `preproses`"
-    cursor.execute(sql)
-
-    # Fetch all the records
-    result = cursor.fetchall()
-    for row in result:
-        x.append(row[0])
-        y.append(row[2])
-
-    x = np.array(x)
-    y = np.array(y)
-
-    x_train, x_test, y_train, y_test = model_selection.train_test_split(
-        x, y, test_size=0.25, random_state=0)
-
-    return x_test
-
-
 def computeSentimentStats(tweetSentimentPairs):
     totalMar = 0.0
     totalSed = 0.0
@@ -174,7 +146,7 @@ def klasifikasi_train():
     return result
 
 
-def random():
+def validasi_data():
     x = []
     y = []
     connection = pymysql.connect(host='localhost',
@@ -198,10 +170,7 @@ def random():
     x = np.array(x)
     y = np.array(y)
 
-    x_train, x_test, y_train, y_test = model_selection.train_test_split(
-        x, y, test_size=0.25, random_state=0)
-
-    return x_test
+    return x
 
 
 def klasifikasi_validasi():
@@ -280,7 +249,7 @@ def confusion_matrix():
     return result
 
 
-def confusion_matrix_validasi():
+def data_kcrossvalidation():
     connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password='',
@@ -290,7 +259,7 @@ def confusion_matrix_validasi():
     cursor = connection.cursor()
 
     # Execute query
-    sql = "SELECT * FROM `confusion_matrix_validasi`"
+    sql = "SELECT * FROM `data_kcrossvalidation`"
     cursor.execute(sql)
 
     # Fetch all the records
